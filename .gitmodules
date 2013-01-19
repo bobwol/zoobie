@@ -1,0 +1,3 @@
+[submodule "webRoot/wp"]
+	path = webRoot/wp
+	url = git://github.com/WordPress/WordPress.git
