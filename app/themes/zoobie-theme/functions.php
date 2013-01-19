@@ -22,6 +22,11 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-/* Load the core theme framework. */
+
+/* ---------------------------------------------------------------------------------
+ * -- Load the core theme framework
+ * ---------------------------------------------------------------------------------
+ *
+ */
 require_once( trailingslashit( get_template_directory() ) . 'hybrid-core/hybrid.php' );
 new Hybrid();
