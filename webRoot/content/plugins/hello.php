@@ -1,1 +1,0 @@
-../../../app/plugins/hello.php
