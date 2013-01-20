@@ -46,6 +46,9 @@ function zoobietheme_setup_theme() {
     /* Get action/filter hook prefix. */
     $prefix = hybrid_get_prefix();
 
+    /* Add theme support for core framework features. */
+    add_theme_support( 'hybrid-core-styles', array( 'parent', 'style' ) );
+
     /* Load required scripts. */
     add_action('wp_enqueue_scripts', 'zoobietheme_enqueue_required_scripts');
 }

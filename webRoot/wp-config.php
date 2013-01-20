@@ -29,7 +29,10 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
  *
  */
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
-define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
+if ( !defined( 'WP_CONTENT_URL' ) ) {
+
+    define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
+}
 
 
 /* ---------------------------------------------------------------------------------
