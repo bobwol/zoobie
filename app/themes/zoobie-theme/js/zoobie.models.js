@@ -1,29 +1,37 @@
 
 //     zoobie.models.js
 
-
-// Initial Setup
-// -------------
-
-var zoobieApp = zoobieApp || {};
+jQuery(function($) {
 
 
-// TodoItem
-// --------
+    // Initial Setup
+    // -------------
 
-// Our basic **TodoItem** model has `title` and `completed` attributes.
-zoobieApp.TodoItem = Backbone.Model.extend({
+    window.Zoobie = window.Zoobie || {
+        Models: {},
+        Collections: {},
+        Views: {}
+    };
 
-    // Default attributes
-    defaults: {
 
-        title: '',
-        completed: false
-    },
+    // TodoItem
+    // --------
 
-    // Toggle the `completed` state of this _todo item
-    toogle: function() {
+    // Our basic **TodoItem** model has `title` and `completed` attributes.
+    Zoobie.Models.TodoItem = Backbone.Model.extend({
 
-        this.set('completed', !this.get('completed'));
-    }
+        // Default attributes
+        defaults: {
+
+            title: '',
+            completed: false
+        },
+
+        // Toggle the `completed` state of this _todo item
+        toogle: function() {
+
+            this.set('completed', !this.get('completed'));
+        }
+    });
+
 });

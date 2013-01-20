@@ -80,26 +80,32 @@ function zoobietheme_enqueue_required_scripts() {
  *
  * Load the following javascript files:
  * - js/models/_todo.js
- * - js/app.js
+ * - js/zoobie.app.js
  *
  */
 function zoobietheme_enqueue_app_scripts() {
 
     wp_enqueue_script(
-        'zoobieApp.Models',
+        'zoobie.models',
         get_template_directory_uri() . '/js/zoobie.models.js',
         array('backbone')
     );
 
     wp_enqueue_script(
-        'zoobieApp.Collections',
+        'zoobie.collections',
         get_template_directory_uri() . '/js/zoobie.collections.js',
         array('backbone')
     );
 
     wp_enqueue_script(
-        'zoobieApp',
-        get_template_directory_uri() . '/js/app.js',
+        'zoobie.views',
+        get_template_directory_uri() . '/js/zoobie.views.js',
+        array('backbone')
+    );
+
+    wp_enqueue_script(
+        'zoobie.app',
+        get_template_directory_uri() . '/js/zoobie.app.js',
         array('backbone')
     );
 }
