@@ -51,6 +51,9 @@ function zoobietheme_setup_theme() {
 
     /* Load required scripts. */
     add_action('wp_enqueue_scripts', 'zoobietheme_enqueue_required_scripts');
+
+    /* Load app scripts. */
+    add_action('wp_enqueue_scripts', 'zoobietheme_enqueue_app_scripts');
 }
 
 
@@ -69,4 +72,34 @@ function zoobietheme_enqueue_required_scripts() {
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'underscore' );
     wp_enqueue_script( 'backbone' );
+}
+
+/* ---------------------------------------------------------------------------------
+ * -- Enqueue App Script files
+ * ---------------------------------------------------------------------------------
+ *
+ * Load the following javascript files:
+ * - js/models/_todo.js
+ * - js/app.js
+ *
+ */
+function zoobietheme_enqueue_app_scripts() {
+
+    wp_enqueue_script(
+        'zoobieApp.Models',
+        get_template_directory_uri() . '/js/models.js',
+        array('backbone')
+    );
+
+    wp_enqueue_script(
+        'zoobieApp.Collections',
+        get_template_directory_uri() . '/js/collections.js',
+        array('backbone')
+    );
+
+    wp_enqueue_script(
+        'zoobieApp',
+        get_template_directory_uri() . '/js/app.js',
+        array('backbone')
+    );
 }
