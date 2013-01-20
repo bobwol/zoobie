@@ -32,11 +32,7 @@ jQuery(function($) {
         collection: todoItems
     });
 
-    _.each( todoItems.models, function( todoItem ) {
-
-        todoItemsView.addOne( todoItem );
-    });
-
-    console.log( todoItemsView.render().el );
+    todoItemsView.render();
+    todoItemsView.addAll();
 
 });

@@ -39,12 +39,52 @@ jQuery(function($) {
     Zoobie.Views.TodoItems = Backbone.View.extend({
 
         el: '#todoapp',
+        statsTemplate: _.template( $('#stats-template').html() ),
+
+
+        initialize: function() {
+
+            this.$main = $( '#main' );
+            this.$footer = $( '#footer' );
+        },
+
+
+        render: function() {
+
+            var completed = this.collection.completed().length;
+            var remaining = this.collection.remaining().length;
+
+            if ( this.collection.length ) {
+
+                this.$main.show();
+                this.$footer.show();
+
+                this.$footer.html( this.statsTemplate( {
+                    completed: completed,
+                    remaining: remaining
+                }) );
+
+            } else {
+
+                this.$main.hide();
+                this.$footer.hide();
+            }
+
+            return this;
+        },
 
 
         addOne: function( todoItem ) {
 
             var view = new Zoobie.Views.TodoItem({ model: todoItem });
             $( '#todo-list' ).append( view.render().el );
+        },
+
+
+        addAll: function() {
+
+            this.$('#todo-list').html('');
+            this.collection.each(this.addOne, this);
         }
 
     });
