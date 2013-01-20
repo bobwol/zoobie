@@ -1,4 +1,9 @@
 
+//  app.js
+
+
+// The Application
+// ---------------
 
 var todo1 = new zoobieApp.TodoItem({ title: 'Todo Item A', completed: true });
 var todo2 = new zoobieApp.TodoItem({ title: 'Todo Item B' });

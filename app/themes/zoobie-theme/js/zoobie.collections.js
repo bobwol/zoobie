@@ -1,19 +1,17 @@
 
-/* ---------------------------------------------------------------------------------
- * -- App Namespace Support
- * ---------------------------------------------------------------------------------
- *
- */
+//     zoobie.collections.js
+
+
+// Initial Setup
+// -------------
+
 var zoobieApp = zoobieApp || {};
 
 
-/* ---------------------------------------------------------------------------------
- * -- TodoItem Collection
- * ---------------------------------------------------------------------------------
- *
- * Our basic **TodoItemList** Collection.
- *
- */
+// TodoItemList
+// ------------
+
+// Our basic **TodoItemList** Collection.
 zoobieApp.TodoItemList = Backbone.Collection.extend({
 
     // Reference to this collection's model.

@@ -87,13 +87,13 @@ function zoobietheme_enqueue_app_scripts() {
 
     wp_enqueue_script(
         'zoobieApp.Models',
-        get_template_directory_uri() . '/js/models.js',
+        get_template_directory_uri() . '/js/zoobie.models.js',
         array('backbone')
     );
 
     wp_enqueue_script(
         'zoobieApp.Collections',
-        get_template_directory_uri() . '/js/collections.js',
+        get_template_directory_uri() . '/js/zoobie.collections.js',
         array('backbone')
     );
 
