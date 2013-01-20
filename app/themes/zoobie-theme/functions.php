@@ -30,3 +30,40 @@
  */
 require_once( trailingslashit( get_template_directory() ) . 'hybrid-core/hybrid.php' );
 new Hybrid();
+
+
+/* ---------------------------------------------------------------------------------
+ * -- Do theme setup
+ * ---------------------------------------------------------------------------------
+ *
+ * Do theme setup on the 'after_setup_theme' hook.
+ *
+ */
+add_action( 'after_setup_theme', 'zoobietheme_setup_theme' );
+
+function zoobietheme_setup_theme() {
+
+    /* Get action/filter hook prefix. */
+    $prefix = hybrid_get_prefix();
+
+    /* Load required scripts. */
+    add_action('wp_enqueue_scripts', 'zoobietheme_enqueue_required_scripts');
+}
+
+
+/* ---------------------------------------------------------------------------------
+ * -- Enqueue required Script files
+ * ---------------------------------------------------------------------------------
+ *
+ * Load the following javascript libraries:
+ * - jQuery
+ * - Underscore.js
+ * - Backbone.s
+ *
+ */
+function zoobietheme_enqueue_required_scripts() {
+
+    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'underscore' );
+    wp_enqueue_script( 'backbone' );
+}
