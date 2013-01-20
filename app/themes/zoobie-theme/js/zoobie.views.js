@@ -21,7 +21,7 @@ jQuery(function($) {
     Zoobie.Views.TodoItem = Backbone.View.extend({
 
         tagName: 'li',
-        template: _.template(jQuery('#item-template').html()),
+        template: _.template(jQuery( '#item-template' ).html()),
 
         render: function() {
 
@@ -44,7 +44,7 @@ jQuery(function($) {
         addOne: function( todoItem ) {
 
             var view = new Zoobie.Views.TodoItem({ model: todoItem });
-            $( '#todo-list').append( view.render().el );
+            $( '#todo-list' ).append( view.render().el );
         }
 
     });

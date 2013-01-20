@@ -30,7 +30,7 @@ jQuery(function($) {
         // Toggle the `completed` state of this _todo item
         toogle: function() {
 
-            this.set('completed', !this.get('completed'));
+            this.set( 'completed', !this.get('completed' ));
         }
     });
 

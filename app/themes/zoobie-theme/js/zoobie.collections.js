@@ -26,9 +26,9 @@ jQuery(function($) {
         // Filter down the list of all todoItems that are finished.
         completed: function() {
 
-            return this.filter(function( todo ) {
+            return this.filter( function( todo ) {
 
-                return todo.get('completed');
+                return todo.get( 'completed' );
             });
         },
 
@@ -36,7 +36,7 @@ jQuery(function($) {
         // Filter down the list to only todoItems that are still not finished.
         remaining: function() {
 
-            return this.without.apply(this, this.completed());
+            return this.without.apply( this, this.completed() );
         }
 
     });
