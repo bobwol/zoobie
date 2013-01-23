@@ -23,10 +23,26 @@ jQuery(function($) {
         tagName: 'li',
         template: _.template(jQuery( '#item-template' ).html()),
 
+        events: {
+            'click .toggle':  'toggleCompleted'
+        },
+
+
+        initialize: function() {
+
+            this.model.on( 'change', this.render, this );
+            this.model.on( 'destroy', this.remove, this );
+        },
+
         render: function() {
 
             this.$el.html( this.template( this.model.toJSON() ) );
             return this;
+        },
+
+        toggleCompleted: function() {
+
+            this.model.toggle();
         }
 
     });
@@ -42,10 +58,26 @@ jQuery(function($) {
         statsTemplate: _.template( $('#stats-template').html() ),
 
 
+        events: {
+
+            'keypress #new-todo': 'createOnEnter',
+            'click #clear-completed': 'clearCompleted',
+            'click #toggle-all': 'toggleAllComplete'
+        },
+
+
         initialize: function() {
 
-            this.$main = $( '#main' );
-            this.$footer = $( '#footer' );
+            this.input = this.$( '#new-todo' );
+            this.allCheckbox = this.$( '#toggle-all' )[0];
+            this.$main = this.$( '#main' );
+            this.$footer = this.$( '#footer' );
+
+            this.collection.on( 'add', this.addOne, this );
+            this.collection.on( 'reset', this.addAll, this );
+            this.collection.on( 'all', this.render, this );
+
+            this.collection.on( 'all', this.render, this );
         },
 
 
@@ -70,6 +102,8 @@ jQuery(function($) {
                 this.$footer.hide();
             }
 
+            this.allCheckbox.checked = !remaining;
+
             return this;
         },
 
@@ -85,6 +119,48 @@ jQuery(function($) {
 
             this.$('#todo-list').html('');
             this.collection.each(this.addOne, this);
+        },
+
+
+        createOnEnter: function( e ) {
+
+            var ENTER_KEY = 13;
+            var todoTitle = this.input.val().trim();
+
+            if ( e.which !== ENTER_KEY || !todoTitle ) {
+
+                return;
+            }
+
+            this.input.val( '' );
+            this.collection.create( {
+                title: todoTitle,
+                completed: false
+            });
+        },
+
+
+        clearCompleted: function() {
+
+            _.each( this.collection.completed(), function( todo ) {
+
+                todo.destroy();
+            });
+
+            console.log(this.collection);
+
+            return false;
+        },
+
+
+        toggleAllComplete: function() {
+
+            var completed = this.allCheckbox.checked;
+
+            this.collection.each(function( todo ) {
+
+                todo.set( 'completed', completed );
+            });
         }
 
     });
